@@ -31,17 +31,44 @@ export default function Team() {
                 title="Co-Founder & Front-End Developer"
               />
 
-              <TeamMember text="H" name="Diệp anh thy" title="CFD1-Offline" />
-              <TeamMember text="" name="huỳnh tiến tài" title="CFD1-Offline" />
-              <TeamMember text="" name="Ngô thành long" title="CFD1-Offline" />
-              <TeamMember text="" name="trần anh tuấn" title="CFD1-Offline" />
-              <TeamMember text="" name="Ngô thành long" title="CFD1-Offline" />
               <TeamMember
+                img="img/thumb-member.jpg"
+                text="H"
+                name="Diệp anh thy"
+                title="CFD1-Offline"
+              />
+              <TeamMember
+                img="img/thumb-member.jpg"
+                text=""
+                name="huỳnh tiến tài"
+                title="CFD1-Offline"
+              />
+              <TeamMember
+                img="img/thumb-member.jpg"
+                text=""
+                name="Ngô thành long"
+                title="CFD1-Offline"
+              />
+              <TeamMember
+                img="img/thumb-member.jpg"
+                text=""
+                name="trần anh tuấn"
+                title="CFD1-Offline"
+              />
+              <TeamMember
+                img="img/thumb-member.jpg"
+                text=""
+                name="Ngô thành long"
+                title="CFD1-Offline"
+              />
+              <TeamMember
+                img="img/thumb-member.jpg"
                 text=""
                 name="nguyễn thành tùng"
                 title="CFD1-Offline"
               />
               <TeamMember
+                img="img/thumb-member.jpg"
                 text=""
                 name="phạm thành trung"
                 title="CFD1-Offline"

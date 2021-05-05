@@ -1,8 +1,8 @@
 export default function TeamMember({
-  text = "H",
-  img = "img/thumb-member.jpg",
-  name = "long",
-  title = "cfd1",
+  text ,
+  img ,
+  name ,
+  title ,
 }) {
   return (
     <div className="item col-md-3 col-sm-4 col-xs-6">

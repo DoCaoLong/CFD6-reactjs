@@ -1,6 +1,6 @@
 import React from "react";
 // import "../public/dest/style.min.css";
-import { Header, Footer } from "./component";
+import { Header, Footer} from "./component";
 import Course from "./page/course";
 import CourseDetail from "./page/coursedetail";
 import Email from "./page/email";
@@ -13,11 +13,14 @@ import Cooperate from "./page/cooperate";
 import RegisterCourse from "./page/register-course";
 import Coins from "./page/coins";
 import Pay from "./page/pay";
+import Error from "./page/404";
+import Nav from "./component/Nav";
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Nav/>
       {/* <Home /> */}
       {/* <Team/> */}
       <CourseDetail/>
@@ -30,6 +33,7 @@ function App() {
       {/* <Project/> */}
       {/* <RegisterCourse/> */}
       {/* <Pay/> */}
+      {/* <Error/> */}
       <Footer />
     </div>
   );
