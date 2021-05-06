@@ -23,11 +23,11 @@ function App() {
       <Nav/>
       {/* <Home /> */}
       {/* <Team/> */}
-      <CourseDetail/>
+      {/* <CourseDetail/> */}
       {/* <Email/> */}
       {/* <Faq/> */}
       {/* <Coins/> */}
-      {/* <Cooperate/> */}
+      <Cooperate/>
       {/* <Course/> */}
       {/* <Profile/> */}
       {/* <Project/> */}
