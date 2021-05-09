@@ -18,49 +18,49 @@ export default function Course(){
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img1.png"
+                img="/img/img1.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img.png"
+                img="/img/img.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img2.png"
+                img="/img/img2.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img3.png"
+                img="/img/img3.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img4.png"
+                img="/img/img4.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img5.png"
+                img="/img/img5.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
             </div>
@@ -76,25 +76,25 @@ export default function Course(){
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img1.png"
+                img="/img/img1.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img2.png"
+                img="/img/img2.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
               <CourseItem
                 name="Web Responsive"
                 des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-                img="img/img3.png"
+                img="/img/img3.png"
                 status="dang-dien-ra"
-                teacher_avatar="img/avt.png"
+                teacher_avatar="/img/avt.png"
                 teacher_name="Trần Nghĩa"
               />
             </div>

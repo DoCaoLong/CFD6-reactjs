@@ -1,10 +1,17 @@
 
+import { useParams, useRouteMatch } from "react-router";
 import BannerStyle2 from "./component/BannerStyle2";
 import Course from "./component/Course";
 import Section2 from "./component/Section2";
 import Section3 from "./component/Section3";
 
 export default function CourseDetail() {
+  let {slug} = useParams()
+  // console.log(slug); 
+
+  let routerMatch = useRouteMatch()
+  console.log(routerMatch);
+
    return (
      <main className="course-detail" id="main">
        <BannerStyle2 />

@@ -1,4 +1,9 @@
+import {Link} from 'react-router-dom'
+import useDelayLink from '../assets/hook/useDelayLink'
 export function Header() {
+
+  let delayLink = useDelayLink()
+
   return (
     <header id="header">
       <div className="wrap">
@@ -10,19 +15,19 @@ export function Header() {
           </div>
           <span className="text">menu</span>
         </div>
-        <a href="#" className="logo">
-          <img src="img/logo.svg" alt="" />
+        <Link to="/" className="logo" onClick={delayLink}>
+          <img src="/img/logo.svg" alt="" />
           <h1>CFD</h1>
-        </a>
+        </Link>
         <div className="right">
           <div className="have-login">
             <div className="account">
-              <a href="#" className="info">
+              <Link to="/ca-nhan" className="info" onClick={delayLink}>
                 <div className="name">Trần Lê Trọng Nghĩa</div>
                 <div className="avatar">
-                  <img src="img/avt.png" alt="" />
+                  <img src="/img/avt.png" alt="" />
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="hamberger"></div>
             <div className="sub">

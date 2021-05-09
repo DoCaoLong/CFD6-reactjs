@@ -1,4 +1,4 @@
-export default function CoinHistory(params) {
+export default function CoinHistory() {
   return (
     <div className="coinhistory">
       <h3>

@@ -1,5 +1,6 @@
 // detect 
 var mdDetect = new MobileDetect(window.navigator.userAgent);
+
 function isMobile() {
     if ($(window).width() <= sizeScreenMobile || mdDetect.phone() !== null) {
         return true;
@@ -42,7 +43,7 @@ function homePage() {
         //     });
         // });
 
-        $carouselGallery.on('scroll.flickity', function (event, progress) {
+        $carouselGallery.on('scroll.flickity', function(event, progress) {
             progress = Math.max(0.05, Math.min(1, progress));
             $progressBar.width(progress * 100 + '%');
         });
@@ -50,10 +51,10 @@ function homePage() {
         let ctrPrevGallery = $('.homepage .section-gallery .btn_ctr.prev'),
             ctrNextGallery = $('.homepage .section-gallery .btn_ctr.next');
 
-        ctrPrevGallery.on('click', function () {
+        ctrPrevGallery.on('click', function() {
             $carouselGallery.flickity('previous');
         });
-        ctrNextGallery.on('click', function () {
+        ctrNextGallery.on('click', function() {
             $carouselGallery.flickity('next');
         });
     }
@@ -74,7 +75,7 @@ function homePage() {
     let videoIntroWrap = $('.section-different .videodif'),
         videoPopup = $('#popup-video .video-src'),
         src = videoIntroWrap.data('src');
-    videoIntroWrap.click(function (e) {
+    videoIntroWrap.click(function(e) {
         e.stopPropagation();
         videoPopup.html('<video controls autoplay loop><source src="' + src + '" type="video/mp4">Your browser does not support the video tag.</video>');
         setTimeout(() => {
@@ -86,11 +87,11 @@ function homePage() {
         videoPopup.html('');
         $('#popup-video').fadeOut(200);
     }
-    $('#popup-video .close').on('click', function () {
+    $('#popup-video .close').on('click', function() {
         closePopupVideo();
     });
 
-    $(document).keyup(function (e) {
+    $(document).keyup(function(e) {
         if (e.key === "Escape") {
             closePopupVideo();
         }
@@ -100,7 +101,7 @@ function homePage() {
     function loadVideoBG() {
         let videoBgWrap = $('.banner .video-bg'),
             srcVideoBg = videoBgWrap.data('src');
-        setTimeout(function () {
+        setTimeout(function() {
             videoBgWrap.html('<video autoplay loop muted><source src="' + srcVideoBg + '" type="video/mp4">Your browser does not support the video tag.</video>')
         }, 800);
     }
@@ -113,7 +114,7 @@ function homePage() {
     //     $('#video-intro')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
     // })
 
-    $('.icon-scrolldown').on('click', function () {
+    $('.icon-scrolldown').on('click', function() {
         $('html').animate({
             scrollTop: $('.banner').next().offset().top,
         }, 300)
@@ -130,24 +131,24 @@ function homePage() {
     // });
 }
 
-function profilePage() {
-    function profileTabClick() {
-        $('.profile .tab-title a').on('click', function (e) {
-            e.preventDefault();
-            let i = $(this).index();
-            $(this).addClass('active').siblings().removeClass('active');
-            $('.profile .tab-content > *:eq(' + i + ')').css({
-                display: 'block'
-            }).siblings().css({
-                display: 'none'
-            })
-        })
-    }
-    profileTabClick();
-}
+// function profilePage() {
+//     function profileTabClick() {
+//         $('.profile .tab-title a').on('click', function(e) {
+//             e.preventDefault();
+//             let i = $(this).index();
+//             $(this).addClass('active').siblings().removeClass('active');
+//             $('.profile .tab-content > *:eq(' + i + ')').css({
+//                 display: 'block'
+//             }).siblings().css({
+//                 display: 'none'
+//             })
+//         })
+//     }
+//     profileTabClick();
+// }
 
 function courseDetailAccordion() {
-    $('.accordion .accordion__title').on('click', function (e) {
+    $('.accordion .accordion__title').on('click', function(e) {
         e.preventDefault();
         // $(this).closest('.accordion').siblings('.active').removeClass('active')
         $(this).next().stop().slideToggle(200);
@@ -166,7 +167,7 @@ courseDetailAccordion();
 
 function coursePage() {
     if ($('#main.course-detail').length === 0) return;
-    $('.banner .video').on('click', function () {
+    $('.banner .video').on('click', function() {
         $('html').animate({
             scrollTop: $('.course-detail .section-2').offset().top - 60
         }, 300)
@@ -175,25 +176,25 @@ function coursePage() {
 
 
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     homePage();
-    profilePage();
+    // profilePage();
     coursePage();
 
 
-    $('.popup-login .close').on('click', function () {
+    $('.popup-login .close').on('click', function() {
         $('.popup-login').fadeOut(200)
     })
 
-    $('.btn-open-login').on('click', function () {
+    $('.btn-open-login').on('click', function() {
         $('.popup-login').fadeIn(200)
     })
 
-    $('.select .head').on('click', function (e) {
+    $('.select .head').on('click', function(e) {
         e.stopPropagation();
         let $select = $(this).closest('.select');
-        $select.find('.sub').fadeToggle(200, function () {
+        $select.find('.sub').fadeToggle(200, function() {
             if ($select.hasClass('active')) {
                 $select.removeClass('active');
             } else {
@@ -202,7 +203,7 @@ $(document).ready(function () {
         });
     })
 
-    $('.select .sub a').on('click', function (e) {
+    $('.select .sub a').on('click', function(e) {
         e.preventDefault();
         let value = $(this).text();
         $(this).closest('.select').find('.head').text(value);
@@ -211,23 +212,23 @@ $(document).ready(function () {
 
 
 
-    $('body').on('click', function () {
+    $('body').on('click', function() {
         $('.select.active .sub').fadeOut(200);
         $('.select sub').fadeOut(200);
     })
 
-    $('.menu-hambeger').on('click', function () {
+    $('.menu-hambeger').on('click', function() {
         $('body').toggleClass('menu-is-show');
     });
 
-    $('#header nav ul').on('click', function (e) {
+    $('#header nav ul').on('click', function(e) {
         e.stopPropagation();
     })
-    $('.overlay_nav').on('click', function (e) {
+    $('.overlay_nav').on('click', function(e) {
         $('body').removeClass('menu-is-show');
     });
 
-    $(document).keyup(function (e) {
+    $(document).keyup(function(e) {
         if (e.key === "Escape") {
             $('body').removeClass('menu-is-show');
         }
@@ -240,13 +241,13 @@ $(document).ready(function () {
         document.execCommand("copy");
     }
 
-    $('.affiliate_token .copy').on('click', function () {
+    $('.affiliate_token .copy').on('click', function() {
         var textToken = document.getElementById("tokenlink");
         copyToClipboard(textToken);
         $(this).html('Đã Copy')
     });
 
-    $('.back-to-top').on('click', function () {
+    $('.back-to-top').on('click', function() {
         $('html').animate({
             scrollTop: 0
         }, 300)
@@ -264,12 +265,12 @@ $(document).ready(function () {
                 imagesLoaded: true,
                 prevNextButtons: false,
                 on: {
-                    ready: function () {
+                    ready: function() {
                         let dotsSlideTes = $('.section-testimonial .flickity-page-dots');
                         let dotsNew = $('.section-testimonial .dots');
                         dotsSlideTes.appendTo(dotsNew);
                     },
-                    change: function (index) {
+                    change: function(index) {
                         $('.testimonial .ct').removeClass('active');
                         $('.testimonial .ct-' + (index + 1)).addClass('active');
                     }
@@ -278,8 +279,8 @@ $(document).ready(function () {
             var flkty = $carousel.data('flickity');
             var $imgs = $('.section-testimonial .carousel-cell picture img');
 
-            $carousel.on('scroll.flickity', function (event, progress) {
-                flkty.slides.forEach(function (slide, i) {
+            $carousel.on('scroll.flickity', function(event, progress) {
+                flkty.slides.forEach(function(slide, i) {
                     var img = $imgs[i];
                     var x = (slide.target + flkty.x) * -1 / 2;
                     img.style.transform = 'translateX( ' + x + 'px)';
@@ -289,10 +290,10 @@ $(document).ready(function () {
             let ctrPrevTes = $('.section-testimonial .btn_ctr.prev'),
                 ctrNextTes = $('.section-testimonial .btn_ctr.next');
 
-            ctrPrevTes.on('click', function () {
+            ctrPrevTes.on('click', function() {
                 $carousel.flickity('previous', true);
             });
-            ctrNextTes.on('click', function () {
+            ctrNextTes.on('click', function() {
                 $carousel.flickity('next', true);
             });
         }

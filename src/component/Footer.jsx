@@ -1,4 +1,8 @@
+import {Link} from 'react-router-dom'
+import useDelayLink from "../assets/hook/useDelayLink";
+
 export function Footer() {
+  let delayLink = useDelayLink()
   return (
     <footer id="footer">
       <div className="container">
@@ -31,16 +35,16 @@ export function Footer() {
             <nav>
               <ul>
                 <li>
-                  <a href="#"> Trang chủ </a>{" "}
+                  <Link onClick={delayLink} to="/"> Trang chủ </Link>{" "}
                 </li>{" "}
                 <li>
-                  <a href="#"> Khóa học </a>{" "}
+                  <Link onClick={delayLink} to="/khoa-hoc"> Khóa học </Link>{" "}
                 </li>{" "}
                 <li>
-                  <a href="#"> Thanh toán </a>{" "}
+                  <Link onClick={delayLink} to="/thanh-toan"> Thanh toán </Link>{" "}
                 </li>{" "}
                 <li>
-                  <a href="#"> Điều khoản </a>{" "}
+                  <Link onClick={delayLink} to="/faq"> Điều khoản </Link>{" "}
                 </li>{" "}
               </ul>{" "}
             </nav>{" "}
