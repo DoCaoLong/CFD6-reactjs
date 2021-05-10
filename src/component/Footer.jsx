@@ -3,6 +3,9 @@ import useDelayLink from "../assets/hook/useDelayLink";
 
 export function Footer() {
   let delayLink = useDelayLink()
+  function handleClick() {
+    document.querySelector(".lazy-load").style.display = "flex";
+  }
   return (
     <footer id="footer">
       <div className="container">
@@ -35,16 +38,16 @@ export function Footer() {
             <nav>
               <ul>
                 <li>
-                  <Link onClick={delayLink} to="/"> Trang chủ </Link>{" "}
+                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/"> Trang chủ </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link onClick={delayLink} to="/khoa-hoc"> Khóa học </Link>{" "}
+                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/khoa-hoc"> Khóa học </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link onClick={delayLink} to="/thanh-toan"> Thanh toán </Link>{" "}
+                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/thanh-toan"> Thanh toán </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link onClick={delayLink} to="/faq"> Điều khoản </Link>{" "}
+                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/"> Điều khoản </Link>{" "}
                 </li>{" "}
               </ul>{" "}
             </nav>{" "}

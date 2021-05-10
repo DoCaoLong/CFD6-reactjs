@@ -23,7 +23,7 @@ export default function Profile() {
             <TabTitle />
             <div className="tab-content">
               <Switch>
-                <Route
+                <Route exact
                   path={`${path}/thong-tin-tai-khoan`}
                   component={InforPro}
                 />

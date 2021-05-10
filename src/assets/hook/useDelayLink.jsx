@@ -8,9 +8,11 @@ export default function useDelayLink(){
       let href = e.currentTarget.getAttribute("href");
       setTimeout(() => {
         history.push(href);
-      }, 1000);
+        document.querySelector(".lazy-load").style.display = "none";
+      }, 450);
       console.log(href);
     }
+
     return delayLink
 }
 

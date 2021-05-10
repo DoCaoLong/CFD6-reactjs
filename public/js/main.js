@@ -234,6 +234,14 @@ $(document).ready(function() {
         }
     });
 
+    $(".nav li a").click(function(e) {
+        e.preventDefault(); //Remove this in your main code
+        $(".nav li a").removeClass("activeNav");
+        $(this).addClass("activeNav");
+        $("body").toggleClass("menu-is-show");
+    });
+
+    // $(".lazy-load").fadeOut(1000);
 
     function copyToClipboard(copyText) {
         copyText.select();
@@ -299,4 +307,9 @@ $(document).ready(function() {
         }
     }
     testimonialSlider();
+
+
+
+
+
 })

@@ -1,8 +1,10 @@
-import {Link} from 'react-router-dom'
-import useDelayLink from '../assets/hook/useDelayLink'
+import { Link} from "react-router-dom";
+import useDelayLink from "../assets/hook/useDelayLink";
 export function Header() {
-
-  let delayLink = useDelayLink()
+  let delayLink = useDelayLink();
+  function handleClick() {
+    document.querySelector(".lazy-load").style.display = "flex";
+  }
 
   return (
     <header id="header">
@@ -15,14 +17,28 @@ export function Header() {
           </div>
           <span className="text">menu</span>
         </div>
-        <Link to="/" className="logo" onClick={delayLink}>
+        <Link
+          to="/"
+          className="logo"
+          onClick={(e) => {
+            handleClick();
+            delayLink(e);
+          }}
+        >
           <img src="/img/logo.svg" alt="" />
           <h1>CFD</h1>
         </Link>
         <div className="right">
           <div className="have-login">
             <div className="account">
-              <Link to="/ca-nhan" className="info" onClick={delayLink}>
+              <Link
+                to="/ca-nhan"
+                className="info"
+                onClick={(e) => {
+                  handleClick();
+                  delayLink(e);
+                }}
+              >
                 <div className="name">Trần Lê Trọng Nghĩa</div>
                 <div className="avatar">
                   <img src="/img/avt.png" alt="" />

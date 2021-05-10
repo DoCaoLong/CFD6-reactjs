@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Header, Footer, Nav} from "./component";
+import { Header, Footer, Nav, LazyLoad} from "./component";
 import Course from "./page/course";
 import CourseDetail from "./page/coursedetail";
 import Email from "./page/email";
@@ -22,6 +22,7 @@ function App() {
       <div className="App">
         <Header />
         <Nav />
+        <LazyLoad/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/ca-nhan" component={Profile} />

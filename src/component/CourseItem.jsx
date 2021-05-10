@@ -1,17 +1,29 @@
-export function CourseItem({name, des, img, teacher_avatar, teacher_name, status}) {
+import useDelayLink from "../assets/hook/useDelayLink";
+import { Link } from "react-router-dom";
+export function CourseItem({
+  name,
+  des,
+  img,
+  teacher_avatar,
+  teacher_name,
+  status,
+}) {
+   let delayLink = useDelayLink();
+   function handleClick() {
+     document.querySelector(".lazy-load").style.display = "flex";
+   }
   return (
     <div className="col-md-4 course">
       <div className="wrap">
         <a className="cover" href="#">
           <img src={img} alt="" />
-		  {
-			  	status === 'da-ket-thuc' ? <span className="badge b1">Đã kết thúc</span> : 
-			  (  
-				status === 'dang-dien-ra' ? <span className="badge b2">Đang diễn ra</span> :
-			  	<span className="badge b3">Sắp diễn ra</span>
-			  )
-			
-		  }
+          {status === "da-ket-thuc" ? (
+            <span className="badge b1">Đã kết thúc</span>
+          ) : status === "dang-dien-ra" ? (
+            <span className="badge b2">Đang diễn ra</span>
+          ) : (
+            <span className="badge b3">Sắp diễn ra</span>
+          )}
           <div className="hover">
             <div className="top">
               <div className="user">
@@ -28,12 +40,10 @@ export function CourseItem({name, des, img, teacher_avatar, teacher_name, status
           </div>
         </a>
         <div className="info">
-          <a className="name" href="#">
+          <Link onClick={(e)=>{handleClick(); delayLink(e)}} className="name" to="/chi-tiet-khoa-hoc">
             {name}
-          </a>
-          <p className="des">
-            {des}
-          </p>
+          </Link>
+          <p className="des">{des}</p>
         </div>
         <div className="bottom">
           <div className="teacher">

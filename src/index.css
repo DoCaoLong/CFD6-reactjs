@@ -17,3 +17,62 @@ code {
     padding-top: 10px;
     /* font-style: italic; */
 }
+
+.activeNav {
+    background-color: #00afab;
+    color: white;
+}
+
+.lazy-load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #f4f7f6;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    display: none;
+}
+
+.lazy-load .circle-item {
+    width: 30px;
+    height: 30px;
+    border: 3px solid violet;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+    /* opacity: 1; */
+}
+
+.lazy-load .circle-item:first-child {
+    border-color: #25c2e3;
+}
+
+.lazy-load .cicles {
+    animation: rotate 1s infinite;
+    margin-top: -70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
+
+@keyframes rotate {
+    60% {
+        transform: rotate(200deg);
+    }
+    75% {
+        transform: rotate(160deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.cl-white:hover {
+    color: #f4f7f6 !important;
+}

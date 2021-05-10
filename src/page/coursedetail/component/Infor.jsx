@@ -10,7 +10,7 @@ export default function Infor(params) {
           <strong>Thời lượng:</strong> 18 buổi
         </div>
       </div>
-      <div className="btn white round" style={{ colorBtn: "#70b6f1" }}>
+      <div className="btn white round cl-white" style={{ colorBtn: "#70b6f1", border:"2px solid #000", color: "#000"}}>
         đăng ký
       </div>
     </div>
