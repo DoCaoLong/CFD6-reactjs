@@ -1,63 +1,66 @@
-import { useState } from "react"
+import React from "react"
+import useFormValidate from "../../../assets/hook/useFormValidate";
 
 export default function InforPro() {
-  let [form, setForm] = useState({
-    name:"",
-    phone:"",
-    UrlFace:"",
-    skype:"",
-  })
-  let [error, setError] = useState({
-    name:"",
-    phone:"",
-    UrlFace:"",
-    skype:"",
-  })
-  function inputChange(e){
-    let value = e.target.value
-    let name = e.target.name 
-    setForm({ ...form, [name]: value });
-  }
-
-  function onSubmit(e){
-    e.preventDefault()
-    let errObj={}
-    if (!form.name.trim().replace(/ +/g, " ")) {
-      errObj.name = "Vui lòng nhập tên";
-    }else if (!/^[A-Za-z\s]+$/.test(form.name)) {
-      errObj.name="Tên không đúng định dạng"
+	
+	let { form, error, inputChange, check } = useFormValidate(
+    {
+      name: "",
+      phone: "",
+      UrlFace: "",
+      skype: "",
+    },
+    {
+      rule: {
+        name: {
+          required: true,
+          pattern: "name",
+        },
+        phone: {
+          required: true,
+          pattern: "phone",
+        },
+        UrlFace: {
+          required: true,
+          pattern: "UrlFace",
+        },
+        skype: {
+          required: true,
+          pattern: "urlSkype",
+        },
+      },
+      message: {
+        name: {
+          required: "Họ và tên không được bỏ trống",
+          pattern: "Tên được viết bằng chữ in hoặc chữ thường",
+        },
+        phone: {
+          required: "Số điện thoại không được bỏ trống",
+          pattern: "Số điện thoại bắt đầu bằng 84 hoặc 0",
+        },
+        UrlFace: {
+          required: "Đường dẫn Facebook không được bỏ trống",
+          pattern: "Đường dẫn Facebook không đúng định dạng",
+        },
+        skype: {
+          required: "Tên Skype không được bỏ trống",
+          pattern: "Đường dẫn Skype không đúng định dạng",
+        },
+      },
     }
+  );
 
-    if (!form.phone.trim()) {
-      errObj.phone = "Vui lòng nhập số điện thoại";
-    } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)) {
-      errObj.phone = "Số điện thoại không đúng định dạng";
-    }
-    
-    if (!form.UrlFace.trim()) {
-      errObj.UrlFace = "Đường dẫn Facebook không được bỏ trống";
-    } else if (
-      !/(?:http:\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(\d.*))?([\w\-]*)?/.test(
-        form.UrlFace
-      )
-    ) {
-      errObj.UrlFace = "Đường dẫn Facebook không đúng định dạng";
-    }
-
-    if(!form.skype.trim()){
-       errObj.skype = "Vui lòng nhập tên Skype";
-    }
-
-    setError(errObj)
-
+	 function onSubmit(e){
+    e.preventDefault();
+    let errObj = check();
     if (Object.keys(errObj).length === 0) {
       console.log(form);
+      //call API
     }
-
   }
 
-  return (
-    <div className="tab1" >
+	return (
+    <div className="tab1">
       <label style={{ flexWrap: "wrap" }}>
         <p>
           Họ và tên<span>*</span>
@@ -70,7 +73,7 @@ export default function InforPro() {
           placeholder="Nguyễn Văn A"
         />
         {error.name && (
-          <p style={{ paddingLeft: 160 }} className="text-error">
+          <p style={{}} className="text-error pd-right-profile">
             {error.name}
           </p>
         )}
@@ -88,7 +91,7 @@ export default function InforPro() {
           placeholder="0949******"
         />
         {error.phone && (
-          <p style={{ paddingLeft: 160 }} className="text-error">
+          <p style={{}} className="text-error pd-right-profile">
             {error.phone}
           </p>
         )}
@@ -113,7 +116,7 @@ export default function InforPro() {
           placeholder="Facebook url"
         />
         {error.UrlFace && (
-          <p style={{ paddingLeft: 160 }} className="text-error">
+          <p style={{}} className="text-error pd-right-profile">
             {error.UrlFace}
           </p>
         )}
@@ -131,7 +134,7 @@ export default function InforPro() {
           placeholder="Skype url"
         />
         {error.skype && (
-          <p style={{ paddingLeft: 160 }} className="text-error">
+          <p style={{}} className="text-error pd-right-profile">
             {error.skype}
           </p>
         )}

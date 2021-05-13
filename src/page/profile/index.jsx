@@ -6,27 +6,25 @@ import ProjectPro from "./component/ProjectPro";
 import PaymentPro from "./component/PaymentPro";
 import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import CoinPro from "./component/CoinPro";
+import { useContext } from "react";
+import { Context } from "../../App";
+
 
 export default function Profile() {
   let { path } = useRouteMatch();
+  let {login} = useContext(Context)
   // <Redirect path="/" />; // URL để chuyển hướng đến. Bất kỳ đường dẫn URL hợp lệ
+  if (!login) return <Redirect path="/"/>
+
   return (
     <main className="profile" id="main">
       <section>
-        <TopInfor
-          img="/img/avatar-lg.png"
-          name="Trần Nghĩa"
-          des="Thành viên của team CFD1-OFFLINE"
-        />
+        <TopInfor/>
         <div className="container">
           <div className="tab">
             <TabTitle />
             <div className="tab-content">
               <Switch>
-                <Route exact
-                  path={`${path}/thong-tin-tai-khoan`}
-                  component={InforPro}
-                />
                 <Route
                   path={`${path}/khoa-hoc-cua-ban`}
                   component={CoursePro}
@@ -38,7 +36,9 @@ export default function Profile() {
                   path={`${path}/lich-su-thanh-toan`}
                   component={PaymentPro}
                 />
+
                 <Route path={`${path}/quan-ly-coin`} component={CoinPro} />
+
                 <Route component={InforPro} />
               </Switch>
             </div>

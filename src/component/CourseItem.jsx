@@ -52,9 +52,9 @@ export function CourseItem({
             </div>
             <div className="name">{teacher_name}</div>
           </div>
-          <a href="#" className="register-btn">
+          <Link to="/dang-ki-khoa-hoc" className="register-btn">
             Đăng Ký
-          </a>
+          </Link>
         </div>
       </div>
     </div>

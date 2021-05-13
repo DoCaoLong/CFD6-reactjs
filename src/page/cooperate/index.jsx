@@ -1,86 +1,74 @@
-import React, {useState } from "react";
+import React from "react";
+import useFormValidate from "../../../src/assets/hook/useFormValidate"
 export default function Cooperate() {
 
-  // let [name, setName] = useState('')
-  // let [phone, setPhone] = useState('')
-  // let [email, setEmail] = useState('')
-
-  let [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    website:"",
-    title:"",
-    content:""
-  });
-
-  let [error, setError] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    website: "",
-    title: "",
-    content: "",
-  });
-
-  function inputChange(e){
-    let name = e.target.name
-    let value = e.target.value
-    setForm({
-      ...form,
-      [name]:value
-    })
-  }
+  let { form, error, inputChange, check } = useFormValidate(
+    {
+      name: "",
+      phone: "",
+      email: "",
+      website: "",
+      title: "",
+      content: "",
+    },
+    {
+      rule: {
+        name: {
+          required: true,
+          pattern: "name",
+        },
+        phone: {
+          required: true,
+          pattern: "phone",
+        },
+        email: {
+          required: true,
+          pattern: "email",
+        },
+        website: {
+          pattern: "url",
+        },
+        title: {
+          required: true,
+        },
+        content: {
+          required: true,
+        },
+      },
+      message: {
+        name: {
+          required: "Họ và tên không được bỏ trống",
+          pattern: "Tên được viết bằng chữ in hoặc chữ thường",
+        },
+        phone: {
+          required: "Số điện thoại không được bỏ trống",
+          pattern: "Số điện thoại bắt đầu bằng 84 hoặc 0",
+        },
+        email: {
+          required: "Email không được bỏ trống",
+          pattern: "Email không đúng định dạng example@gmail.com",
+        },
+        website: {
+          pattern: "Website không đúng định dạng",
+        },
+        title: {
+          required: "Tiêu đề không được bỏ trống",
+        },
+        content: {
+          required: "Nội dung không được bỏ trống",
+        },
+      },
+    }
+  );
 
   function onSubmit(e){
-    form.name.trim().replace(/ +/g," ");
     e.preventDefault();
-
-    let errObj = {};
-
-    if (!form.name.trim().replace(/ +/g, " ")) {
-      errObj.name = "Vui lòng nhập tên";
-    } else if (!/^[A-Za-z\s]+$/.test(form.name)) {
-      errObj.name = "Tên không đúng định dạng";
-    }
-
-    if (!form.phone.trim()) {
-      errObj.phone = "Vui lòng nhập số điện thoại";
-    }
-
-    else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)){
-      errObj.phone = "Số điện thoại không đúng định dạng";
-    }
-
-    if (!form.email.trim()) {
-      errObj.email = "Vui lòng nhập email";
-    }
-
-    else if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(form.email)){
-       errObj.email = "Email không đúng định dạng";
-    }
-
-    if(form.website.trim() && !/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/.test(form.website)){
-      errObj.website = "Website không đúng định dạng";
-    }
-
-    if (!form.title.trim()) {
-      errObj.title = "Vui lòng nhập tiêu đề";
-    }
-
-    if (!form.content.trim()) {
-      errObj.content = "Vui lòng nhập nội dung";
-    }
-
-    setError(errObj);
-
+    let errObj = check();
     if (Object.keys(errObj).length === 0) {
       console.log(form);
+      //call API
     }
-
   }
-  
-
 
   return (
     <main className="register-course" id="main">
@@ -93,7 +81,6 @@ export default function Cooperate() {
           dụng và công ty trong và ngoài nước.
         </p>
         <div className="form">
-
           <label style={{ flexWrap: "wrap" }}>
             <p>
               Họ và tên<span>*</span>
@@ -105,7 +92,7 @@ export default function Cooperate() {
               type="text"
               placeholder="Họ và tên bạn"
             />
-            {error.name && <p className="text-error">{error.name}</p>}
+            {error.name && <p className="text-error pd-right-contact">{error.name}</p>}
             {/* <InputComponent ref={inputRef} /> */}
           </label>
 
@@ -118,7 +105,7 @@ export default function Cooperate() {
               type="text"
               placeholder="Số điện thoại"
             />
-            {error.phone && <p className="text-error">{error.phone}</p>}
+            {error.phone && <p className="text-error pd-right-contact">{error.phone}</p>}
           </label>
 
           <label style={{ flexWrap: "wrap" }}>
@@ -132,7 +119,7 @@ export default function Cooperate() {
               type="text"
               placeholder="Email của bạn"
             />
-            {error.email && <p className="text-error">{error.email}</p>}
+            {error.email && <p className="text-error pd-right-contact">{error.email}</p>}
           </label>
 
           <label style={{ flexWrap: "wrap" }}>
@@ -144,7 +131,7 @@ export default function Cooperate() {
               type="text"
               placeholder="Đường dẫn website http://"
             />
-            {error.website && <p className="text-error">{error.website}</p>}
+            {error.website && <p className="text-error pd-right-contact">{error.website}</p>}
           </label>
 
           <label style={{ flexWrap: "wrap" }}>
@@ -158,7 +145,7 @@ export default function Cooperate() {
               onChange={inputChange}
               placeholder="Tiêu đề liên hệ"
             />
-            {error.title && <p className="text-error">{error.title}</p>}
+            {error.title && <p className="text-error pd-right-contact">{error.title}</p>}
           </label>
 
           <label style={{ flexWrap: "wrap" }}>
@@ -173,13 +160,14 @@ export default function Cooperate() {
               rows={10}
               defaultValue={""}
             />
-            {error.content && <p className="text-error">{error.content}</p>}
+            {error.content && (
+              <p className="text-error pd-right-contact">{error.content}</p>
+            )}
           </label>
 
           <div onClick={onSubmit} className="btn main rect">
             đăng ký
           </div>
-
         </div>
       </section>
       {/* <div class="register-success">

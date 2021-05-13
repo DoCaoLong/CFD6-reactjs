@@ -1,15 +1,18 @@
-export default function TopInfor({ img, name, des }) {
+import {useContext} from 'react'
+import {Context} from "../../../App";
+
+export default function TopInfor({}) {
+  let {login} = useContext(Context)
   return (
     <div className="top-info">
       <div className="avatar">
         {/* <span class="text">H</span> */}
-        <img src={img} alt="" />
+        <img src={login.avatar} alt="" />
         <div className="camera" />
       </div>
-      <div className="name">{name}</div>
-      <p className="des">{des}</p>
+      <div className="name">{login.name}</div>
+      <p className="des">Thành viên của CFD3-OFFLINE</p>
     </div>
   );
 }
 
-// trần nghĩa

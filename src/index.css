@@ -11,11 +11,32 @@ code {
 
 .text-error {
     width: 100% !important;
-    padding-left: 180px;
     flex-wrap: wrap;
     color: red !important;
     padding-top: 10px;
+    font-family: ab;
     /* font-style: italic; */
+}
+
+.pd-left-register {
+    padding-left: 180px;
+}
+
+.pd-right-profile {
+    padding-left: 160px;
+}
+
+.pd-right-contact {
+    padding-left: 180px;
+}
+
+.pd-login {
+    padding-left: 0;
+    margin: -20px 0 20px 0;
+}
+
+.mb-10 {
+    margin-bottom: 15px !important;
 }
 
 .activeNav {

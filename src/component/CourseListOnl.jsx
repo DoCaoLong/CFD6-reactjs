@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
     return (
       <div className="col-md-4 course gray">
@@ -23,9 +24,7 @@ export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
             <a href="#" className="name">
               {nameCourse}
             </a>
-            <p className="des">
-              {des}
-            </p>
+            <p className="des">{des}</p>
           </div>
           <div className="bottom">
             <div className="teacher">
@@ -34,7 +33,9 @@ export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
               </div>
               <div className="name">{nameTeacher}</div>
             </div>
-            <div className="register-btn">Đăng Ký</div>
+            <Link to="/dang-ki-khoa-hoc" className="register-btn">
+              Đăng Ký
+            </Link>
           </div>
         </div>
       </div>
