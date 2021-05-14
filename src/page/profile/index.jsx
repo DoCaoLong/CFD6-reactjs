@@ -4,17 +4,12 @@ import TabTitle from "./component/TabTitle";
 import TopInfor from "./component/TopInfor";
 import ProjectPro from "./component/ProjectPro";
 import PaymentPro from "./component/PaymentPro";
-import { Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
+import { Switch, Route, useRouteMatch} from "react-router-dom";
 import CoinPro from "./component/CoinPro";
-import { useContext } from "react";
-import { Context } from "../../App";
-
 
 export default function Profile() {
+
   let { path } = useRouteMatch();
-  let {login} = useContext(Context)
-  // <Redirect path="/" />; // URL để chuyển hướng đến. Bất kỳ đường dẫn URL hợp lệ
-  if (!login) return <Redirect path="/"/>
 
   return (
     <main className="profile" id="main">

@@ -1,6 +1,14 @@
 import AccodionItem from "./AccordionItem"
+import {Link} from 'react-router-dom'
+import useDelayLink from "../../../assets/hook/useDelayLink";
+export default function Section2() {
 
-export default function Section2(params) {
+    let delayLink = useDelayLink();
+
+    function handleClick() {
+      document.querySelector(".lazy-load").style.display = "flex";
+    }
+
   return (
     <section className="section-2">
       <div className="container">
@@ -107,7 +115,7 @@ export default function Section2(params) {
                 do some things a bit more "automatically"
               </p>
               <p>
-                <strong>Website:</strong> <a href="#">http://nghiatran.info</a>
+                <strong>Website:</strong> <a target="_blank" href="http://nghiatran.info">http://nghiatran.info</a>
               </p>
             </div>
           </div>
@@ -116,7 +124,7 @@ export default function Section2(params) {
           <div className="user">
             <img src="img/user-group-icon.png" alt="" /> 12 bạn đã đăng ký
           </div>
-          <div className="btn main btn-register round">đăng ký</div>
+          <Link to="/dang-ki-khoa-hoc" onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }}  className="btn main btn-register round">đăng ký</Link>
           <div className="btn-share btn overlay round btn-icon">
             <img src="img/facebook.svg" alt="" />
           </div>

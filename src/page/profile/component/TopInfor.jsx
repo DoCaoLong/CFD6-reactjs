@@ -1,8 +1,8 @@
-import {useContext} from 'react'
 import {Context} from "../../../App";
+import useAuth from '../../../assets/hook/useAuth';
 
 export default function TopInfor({}) {
-  let {login} = useContext(Context)
+  let {login} = useAuth(Context)
   return (
     <div className="top-info">
       <div className="avatar">

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Header, Footer, Nav, LazyLoad, PopupLogin } from "./component";
+import { Header, Footer, Nav, LazyLoad, PopupLogin, PrivateRoute, PopupRegis} from "./component";
 import Course from "./page/course";
 import CourseDetail from "./page/coursedetail";
 import Email from "./page/email";
@@ -14,35 +14,48 @@ import RegisterCourse from "./page/register-course";
 import Coins from "./page/coins";
 import Pay from "./page/pay";
 import Page404 from "./page/404";
-import  "./index.css"
-
-export let Context = React.createContext({})
+import "./index.css";
+export let Context = React.createContext({});
 
 function App() {
-  let [state, setState]= useState({
-    login: false
-  })
+  let [state, setState] = useState({
+    login: JSON.parse(localStorage.getItem("login")) 
+  });
 
-  function handleLogin(username, password){
-    if(username === 'admin@gmail.com' && password === "123456"){
+  useEffect(() => {
+    localStorage.setItem('login', JSON.stringify(state.login))
+  }, [state.login]) 
+
+  function handleLogin(username, password) {
+    if (username === "admin@gmail.com" && password === "123456") {
       setState({
         ...state,
-        login:{
+        login: {
           name: "Đỗ Cao Long",
-          avatar: "/img/avatar-lg.png"
-        }
-      })
-    }else{
-      return 'Sai Email hoặc mật khẩu'
+          avatar: "/img/long.jpg",
+        },
+      });
+
+      // localStorage.setItem(
+      //   "login",
+      //   JSON.stringify({ name: "Đỗ Cao Long", avatar: "/img/avatar-lg.png" })
+      // );
+
+    } else {
+      return "Sai Email hoặc mật khẩu";
     }
   }
-  function handleLogout(){
-  
-      setState({
-        ...state,
-        login: false
-      })
-   
+
+  function handleLogout() {
+    setState({
+      ...state,
+      login: false,
+    });
+
+    // localStorage.setItem(
+    //   "login", false
+    // );
+
   }
 
   return (
@@ -53,19 +66,19 @@ function App() {
           <Nav />
           <LazyLoad />
           <PopupLogin />
+          <PopupRegis/>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/ca-nhan" component={Profile} />
-            {/* cách 2 */}
+            <PrivateRoute path="/ca-nhan" component={Profile} /> {/* cách 2 */}
             {/* <Route path="/ca-nhan" render={(prop) => <Profile {...prop}/>} /> */}
             {/* cách 3 */}
             {/* <Route path="/ca-nhan">
-            <Profile/>
-          </Route> */}
+                        <Profile/>
+                      </Route> */}
             <Route path="/gioi-thieu-coin" component={Coins} />
             <Route path="/team" component={Team} />
             <Route path="/hop-tac" component={Cooperate} />
-            <Route path="/khoa-hoc" component={Course} />
+            <Route path="/khoa-hoc" component={Course} /> 
             {/* Dynamic Router */}
             {/* <Route path="/khoa-hoc/:slug" component={CourseDetail} /> */}
             <Route path="/chi-tiet-khoa-hoc" component={CourseDetail} />

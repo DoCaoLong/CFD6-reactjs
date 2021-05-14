@@ -1,20 +1,26 @@
 import { Link} from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "../App";
 import useDelayLink from "../assets/hook/useDelayLink";
+import useAuth from "../assets/hook/useAuth";
 export function Header() {
   
   let delayLink = useDelayLink();
 
-  let { login, handleLogout } = useContext(Context);
+  let { login, handleLogout } = useAuth();
 
   function handleClick() {
     document.querySelector(".lazy-load").style.display = "flex";
   }
-
-  function popupLogin(){
-    document.querySelector('.popup-login').style.display= "flex"
+  
+  function popupLogin() {
+    document.querySelector(".popup-login").style.display = "flex";
   }
+
+  function popupRegis() {
+    document.querySelector(".popup-regis").style.display = "flex";
+  }
+
+
+ 
 
   return (
     <header id="header">
@@ -31,6 +37,7 @@ export function Header() {
           to="/"
           className="logo"
           onClick={(e) => {
+            e.preventDefault();
             handleClick();
             delayLink(e);
           }}
@@ -46,6 +53,7 @@ export function Header() {
                   to="/ca-nhan"
                   className="info"
                   onClick={(e) => {
+                    e.preventDefault();
                     handleClick();
                     delayLink(e);
                   }}
@@ -58,17 +66,35 @@ export function Header() {
               </div>
               <div className="hamberger"></div>
               <div className="sub">
-                <a href="#">Khóa học của tôi</a>
-                <a href="#">Thông tin tài khoản</a>
-                <a href="#" onClick={e => {e.preventDefault(); handleLogout()}}>Đăng xuất</a>
+                <Link href="#">Khóa học của tôi</Link>
+                <Link href="#">Thông tin tài khoản</Link>
+                <Link
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLogout();
+                    handleClick();
+                    delayLink(e);
+                  }}
+                >
+                  Đăng xuất
+                </Link>
               </div>
             </div>
           ) : (
             <div class="not-login bg-none">
-              <Link to="#" class="btn-register" onClick={popupLogin}>
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  popupLogin(e);
+                }}
+                to="#"
+                class="btn main btn-open-login"
+                style={{ backgroundColor: "#f4f7f6", color: "#000" }}
+              >
                 Đăng nhập
               </Link>
-              <Link to="#" class="btn main btn-open-login">
+              <Link to="#" class="btn main btn-register" onClick={popupRegis}>
                 Đăng ký
               </Link>
             </div>

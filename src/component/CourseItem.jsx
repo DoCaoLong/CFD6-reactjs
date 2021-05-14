@@ -9,13 +9,15 @@ export function CourseItem({
   status,
 }) {
    let delayLink = useDelayLink();
+
    function handleClick() {
      document.querySelector(".lazy-load").style.display = "flex";
    }
+
   return (
     <div className="col-md-4 course">
       <div className="wrap">
-        <a className="cover" href="#">
+        <Link onClick={(e)=>{handleClick(); delayLink(e)}} className="cover" to="/chi-tiet-khoa-hoc">
           <img src={img} alt="" />
           {status === "da-ket-thuc" ? (
             <span className="badge b1">Đã kết thúc</span>
@@ -38,7 +40,7 @@ export function CourseItem({
               <img src="img/icon-viewmore.svg" alt="" />
             </div>
           </div>
-        </a>
+        </Link>
         <div className="info">
           <Link onClick={(e)=>{handleClick(); delayLink(e)}} className="name" to="/chi-tiet-khoa-hoc">
             {name}
@@ -52,7 +54,7 @@ export function CourseItem({
             </div>
             <div className="name">{teacher_name}</div>
           </div>
-          <Link to="/dang-ki-khoa-hoc" className="register-btn">
+          <Link onClick={(e)=>{handleClick(); delayLink(e)}} to="/dang-ki-khoa-hoc" className="register-btn">
             Đăng Ký
           </Link>
         </div>

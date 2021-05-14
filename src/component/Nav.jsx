@@ -16,17 +16,17 @@ export function Nav(){
             <a href="#">Đăng ký</a>
           </li>
           <li>
-            <Link className="activeNav" onClick={(e)=>{handleClick(); delayLink(e)}} to="/">
+            <Link className="activeNav" onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/">
               Trang chủ
             </Link>
           </li>
           <li>
-            <Link onClick={(e)=>{handleClick(); delayLink(e)}} to="/khoa-hoc">
+            <Link onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/khoa-hoc">
               Khóa Học
             </Link>
           </li>
           <li>
-            <Link onClick={(e)=>{handleClick(); delayLink(e)}} to="/du-an">
+            <Link onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/du-an">
               Dự Án
             </Link>
           </li>

@@ -1,9 +1,18 @@
 import {Link} from 'react-router-dom'
+import useDelayLink from '../assets/hook/useDelayLink';
+
 export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
+
+   let delayLink = useDelayLink();
+
+   function handleClick() {
+     document.querySelector(".lazy-load").style.display = "flex";
+   }
+
     return (
       <div className="col-md-4 course gray">
         <div className="wrap">
-          <a className="cover" href="#">
+          <Link onClick={(e)=>{handleClick(); delayLink(e)}} to="/chi-tiet-khoa-hoc" className="cover" to="/chi-tiet-khoa-hoc">
             <img src={img} alt="" />
             <div className="hover">
               <div className="top">
@@ -19,11 +28,11 @@ export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
                 <img src="img/icon-viewmore.svg" alt="" />
               </div>
             </div>
-          </a>
+          </Link>
           <div className="info">
-            <a href="#" className="name">
+            <Link to="#" className="name">
               {nameCourse}
-            </a>
+            </Link>
             <p className="des">{des}</p>
           </div>
           <div className="bottom">
@@ -33,7 +42,7 @@ export function CourseListOnl({img, nameCourse, des, nameTeacher, }){
               </div>
               <div className="name">{nameTeacher}</div>
             </div>
-            <Link to="/dang-ki-khoa-hoc" className="register-btn">
+            <Link onClick={(e)=>{handleClick(); delayLink(e)}}  to="/dang-ki-khoa-hoc" className="register-btn">
               Đăng Ký
             </Link>
           </div>

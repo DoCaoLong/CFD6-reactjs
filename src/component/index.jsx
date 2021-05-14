@@ -5,3 +5,5 @@ export * from "./Nav";
 export * from "./LazyLoad"
 export * from "./CourseListOnl"
 export * from "./PopupLogin";
+export * from "./PopupRegis";
+export * from "./PrivateRoute";

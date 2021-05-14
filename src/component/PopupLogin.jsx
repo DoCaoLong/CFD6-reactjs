@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import reactDom from 'react-dom'
 import { Context } from '../App';
+import useAuth from '../assets/hook/useAuth';
 import useFormValidate from '../assets/hook/useFormValidate';
 export function PopupLogin() {
 
@@ -32,18 +33,18 @@ export function PopupLogin() {
       }
     }
   );
-  let {handleLogin} = useContext(Context)
+  let {handleLogin} = useAuth(Context)
 
   function close(){
     document.querySelector('.popup-login').style.display= 'none'
   }
 
   function loginHandle(e){
-     e.preventDefault();
+    e.preventDefault();
     let errObj = check()
     if(Object.keys(errObj).length === 0){
       let res = handleLogin(form.username, form.password)
-      if(res){
+      if(res){     
         alert(res)
       }else{
         close()
@@ -101,12 +102,12 @@ export function PopupLogin() {
               Google
             </div>
           </div>
-          <div className="close">
+          <div className="close" onClick={close}>
             <img src="img/close-icon.png" alt="" />
           </div>
         </div>
         {/* email form */}
-        <div className="ct_email">
+        {/* <div className="ct_email">
           <h2 className="title">Đặt lại mật khẩu</h2>
           <input type="text" placeholder="Email" />
           <div className="btn rect main btn-next">Tiếp theo</div>
@@ -114,7 +115,7 @@ export function PopupLogin() {
           <div className="close">
             <img src="img/close-icon.png" alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>,
     document.getElementById("root2")

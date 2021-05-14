@@ -38,16 +38,16 @@ export function Footer() {
             <nav>
               <ul>
                 <li>
-                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/"> Trang chủ </Link>{" "}
+                  <Link  onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/"> Trang chủ </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/khoa-hoc"> Khóa học </Link>{" "}
+                  <Link  onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/khoa-hoc"> Khóa học </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/thanh-toan"> Thanh toán </Link>{" "}
+                  <Link  onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/thanh-toan"> Thanh toán </Link>{" "}
                 </li>{" "}
                 <li>
-                  <Link  onClick={(e)=>{handleClick(); delayLink(e)}} to="/"> Điều khoản </Link>{" "}
+                  <Link  onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/"> Điều khoản </Link>{" "}
                 </li>{" "}
               </ul>{" "}
             </nav>{" "}

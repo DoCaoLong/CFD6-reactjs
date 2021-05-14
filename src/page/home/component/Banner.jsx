@@ -12,7 +12,7 @@ export default function Banner(){
         <h2 className="title">Thực Chiến</h2>
         <h2 className="title">Tạo ra sản phẩm có giá trị</h2>
         {/* <div className="btn main round">KHÓA HỌC</div> */}
-         <Link className="btn main round" onClick={(e) => {handleClick(); delayLink(e)}} to="/khoa-hoc">KHÓA HỌC</Link>
+         <Link className="btn main round" onClick={(e)=> {e.preventDefault(); handleClick(); delayLink(e) }} to="/khoa-hoc">KHÓA HỌC</Link>
         </div>
         </div>
         <div className="jarallax-img">
