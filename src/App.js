@@ -19,6 +19,13 @@ import AuthApi from "./service/AuthApi";
 export let Context = React.createContext({});
 
 function App() {
+
+  AuthApi.update({
+    name: "Khủng long xanh"
+  }).then(res => {
+    
+  })
+
   let [state, setState] = useState({
     login: JSON.parse(localStorage.getItem("login")) 
   });
