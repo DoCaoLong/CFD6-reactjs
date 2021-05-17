@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import reactDom from 'react-dom'
-import { Context } from '../App';
 import useAuth from '../assets/hook/useAuth';
 import useFormValidate from '../assets/hook/useFormValidate';
 export function PopupLogin() {
-
+  let [loginError, setLoginError] = useState(null)
   let { inputChange, check, error, form } = useFormValidate(
     {
       username: "",
@@ -20,35 +19,31 @@ export function PopupLogin() {
           required: true,
           min: 6,
           max: 32
-        },
-      },
-      message:{
-        username:{
-          require: "Email không được bỏ trống",
-          pattern: "Email không đúng định dạng"
-        },
-        password:{
-          require: "Mật khẫu không được bỏ trống",
         }
-      }
+      },
     }
   );
-  let {handleLogin} = useAuth(Context)
+  let {handleLogin } = useAuth();
 
   function close(){
     document.querySelector('.popup-login').style.display= 'none'
   }
 
-  function loginHandle(e){
+  async function loginHandle(e){
     e.preventDefault();
     let errObj = check()
     if(Object.keys(errObj).length === 0){
-      let res = handleLogin(form.username, form.password)
-      if(res){     
-        alert(res)
-      }else{
+      let res = await handleLogin(form.username, form.password)
+      if(res.success){
         close()
+      }else if(res.error){
+        setLoginError(res.error)
       }
+      // if(res){     
+      //   alert(res)
+      // }else{
+      //   // close()
+      // }
     }
   }
 
@@ -58,6 +53,7 @@ export function PopupLogin() {
         {/* login-form */}
         <div className="ct_login" style={{ display: "block" }}>
           <h2 className="title">Đăng nhập</h2>
+
           <input
             value={form.username}
             name="username"
@@ -90,6 +86,7 @@ export function PopupLogin() {
               Quên mật khẩu?
             </a>
           </div>
+          {loginError && <p className="text-error">{loginError}</p>}
           <div className="btn rect main btn-login" onClick={loginHandle}>
             đăng nhập
           </div>

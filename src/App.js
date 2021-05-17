@@ -15,6 +15,7 @@ import Coins from "./page/coins";
 import Pay from "./page/pay";
 import Page404 from "./page/404";
 import "./index.css";
+import AuthApi from "./service/AuthApi";
 export let Context = React.createContext({});
 
 function App() {
@@ -26,24 +27,85 @@ function App() {
     localStorage.setItem('login', JSON.stringify(state.login))
   }, [state.login]) 
 
-  function handleLogin(username, password) {
-    if (username === "admin@gmail.com" && password === "123456") {
-      setState({
-        ...state,
-        login: {
-          name: "Đỗ Cao Long",
-          avatar: "/img/long.jpg",
-        },
-      });
+  async function handleLogin(username, password) {
+    try{
+      let res = await AuthApi.login({ username, password });
+      // convert to json
+      if (res.data) {
+        setState({
+          ...state,
+          login: res.data,
+        });
+        return {
+          success: true,
+        };
+      } else if (res.error) {
+        // trả về báo lỗi từ back end
+        return {
+          error: res.error,
+        };
+      }
+    }catch(err){
 
-      // localStorage.setItem(
-      //   "login",
-      //   JSON.stringify({ name: "Đỗ Cao Long", avatar: "/img/avatar-lg.png" })
-      // );
-
-    } else {
-      return "Sai Email hoặc mật khẩu";
     }
+
+    //     setState({
+    //       ...state,
+    //       login: res.data,
+    //     });
+    //     callback()
+    //   }else if(res.error){
+    //     setState({
+    //       ...state,
+    //       loginError: res.error
+    //     })
+    //   }
+    // })
+    // // gửi resques mất mạng thì vô catch
+    // .catch((err) =>{
+    //   // console.log('error', err);
+    // })
+
+    // 1 bất đồng bộ return về 1 promise thì sử dụng then
+    // .then((res) => {
+    //   return res.json()
+    // })
+    // .then(res=>{
+    //   if(res.data){
+    //     setState({
+    //       ...state,
+    //       login: res.data,
+    //     });
+    //     callback()
+    //   }else if(res.error){
+    //     setState({
+    //       ...state,
+    //       loginError: res.error
+    //     })
+    //   }
+    // })
+    // // gửi resques mất mạng thì vô catch
+    // .catch((err) =>{
+    //   // console.log('error', err);
+    // })
+
+    // if (username === "admin@gmail.com" && password === "123456") {
+    //   setState({
+    //     ...state,
+    //     login: {
+    //       name: "Đỗ Cao Long",
+    //       avatar: "/img/long.jpg",
+    //     },
+    //   });
+
+    //   // localStorage.setItem(
+    //   //   "login",
+    //   //   JSON.stringify({ name: "Đỗ Cao Long", avatar: "/img/avatar-lg.png" })
+    //   // );
+
+    // } else {
+    //   return "Sai Email hoặc mật khẩu";
+    // }
   }
 
   function handleLogout() {
@@ -78,7 +140,8 @@ function App() {
             <Route path="/gioi-thieu-coin" component={Coins} />
             <Route path="/team" component={Team} />
             <Route path="/hop-tac" component={Cooperate} />
-            <Route path="/khoa-hoc" component={Course} /> 
+            <Route path="/khoa-hoc/:slug" component={Course} /> 
+            {/* <Route path="/khoa-hoc/" component={Course} />  */}
             {/* Dynamic Router */}
             {/* <Route path="/khoa-hoc/:slug" component={CourseDetail} /> */}
             <Route path="/chi-tiet-khoa-hoc" component={CourseDetail} />

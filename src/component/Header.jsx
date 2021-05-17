@@ -19,9 +19,6 @@ export function Header() {
     document.querySelector(".popup-regis").style.display = "flex";
   }
 
-
- 
-
   return (
     <header id="header">
       <div className="wrap">
@@ -67,7 +64,11 @@ export function Header() {
               <div className="hamberger"></div>
               <div className="sub">
                 <Link href="#">Khóa học của tôi</Link>
-                <Link href="#">Thông tin tài khoản</Link>
+                <Link to="/ca-nhan"  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick();
+                    delayLink(e);
+                  }}>Thông tin tài khoản</Link>
                 <Link
                   href="#"
                   onClick={(e) => {
