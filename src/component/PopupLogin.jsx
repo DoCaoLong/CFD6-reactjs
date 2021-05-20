@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import reactDom from 'react-dom'
+import { useSelector } from 'react-redux';
 import useAuth from '../assets/hook/useAuth';
 import useFormValidate from '../assets/hook/useFormValidate';
 export function PopupLogin() {
@@ -24,6 +25,9 @@ export function PopupLogin() {
     }
   );
   let {handleLogin } = useAuth();
+
+  let st = useSelector(store => store);
+  console.log(st);
 
   function close(){
     document.querySelector('.popup-login').style.display= 'none'

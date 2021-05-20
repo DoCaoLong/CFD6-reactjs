@@ -1,22 +1,41 @@
 
+import { useEffect, useState } from "react";
 import { useParams, useRouteMatch } from "react-router";
 import BannerStyle2 from "./component/BannerStyle2";
 import Course from "./component/Course";
 import Section2 from "./component/Section2";
 import Section3 from "./component/Section3";
+import CourseApi from "../../service/CourseApi";
 
 export default function CourseDetail() {
   let {slug} = useParams()
-  // console.log(slug); 
+  console.log(slug); 
 
   let routerMatch = useRouteMatch()
-  console.log(routerMatch);
+
+  const [course, setCourse] = useState();
+
+  useEffect(async() => {
+    let res = await CourseApi.courseDetail(slug);
+    setCourse(res.data);
+  },[slug]);
+
+  console.log(course);
 
    return (
      <main className="course-detail" id="main">
-       <BannerStyle2 />
+       <BannerStyle2
+         title={course?.title}
+         date={course?.opening_time}
+         time={course?.count_video}
+       />
        <Section2 />
-       <Section3 />
+       <Section3
+         img={course?.thumbnail.link}
+         des={course?.short_description}
+         namecourse={course?.title}
+         name={course?.teacher.title}
+       />
        <section className="section-4">
          <div className="container">
            <div className="textbox">
@@ -25,22 +44,22 @@ export default function CourseDetail() {
            </div>
            <div className="list row">
              <Course
-               img="img/img.png"
-               des="One of the best corporate fashion brands in Sydney"
-               namecourse="Reacjs/Redux"
-               name="Trần Nghĩa"
+               img={course?.thumbnail.link}
+               des={course?.short_description}
+               namecourse={course?.title}
+               name={course?.teacher.title}
              />
              <Course
-               img="img/img2.png"
-               des="One of the best corporate fashion brands in Sydney"
-               namecourse="Front-end nâng cao"
-               name="Vương Đặng"
+               img={course?.thumbnail.link}
+               des={course?.short_description}
+               namecourse={course?.title}
+               name={course?.teacher.title}
              />
              <Course
-               img="img/img3.png"
-               des="One of the best corporate fashion brands in Sydney"
-               namecourse="Laravel framework"
-               name="Trần Nghĩa"
+               img={course?.thumbnail.link}
+               des={course?.short_description}
+               namecourse={course?.title}
+               name={course?.teacher.title}
              />
            </div>
          </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import useFormValidate from "../../../src/assets/hook/useFormValidate"
-export default function Cooperate() {
+import useFormValidate from "../../assets/hook/useFormValidate"
+export default function Contact() {
 
   let { form, error, inputChange, check } = useFormValidate(
     {

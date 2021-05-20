@@ -1,11 +1,6 @@
 import {Link} from 'react-router-dom'
-import useDelayLink from '../../assets/hook/useDelayLink';
 export default function Page404(){
-  //  let delayLink = useDelayLink;
 
-  //  function handleClick() {
-  //    document.querySelector(".lazy-load").style.display = "flex";
-  //  }
     return (
       <main class="notfound" id="main">
         <div class="container">

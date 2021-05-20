@@ -26,7 +26,7 @@ export function CourseItem({
           className="cover"
           to={`/khoa-hoc/${slug}`}
         >
-          <img src={thumbnail.link} alt="" />
+          <img src={thumbnail?.link} alt="" />
           {course_status === "da-ket-thuc" ? (
             <span className="badge b1">Đã kết thúc</span>
           ) : course_status === "dang-dien-ra" ? (
@@ -65,9 +65,9 @@ export function CourseItem({
         <div className="bottom">
           <div className="teacher">
             <div className="avatar">
-              <img src={teacher.avatar.link} alt="" />
+              <img src={teacher?.avatar?.link} alt="" />
             </div>
-            <div className="name">{teacher.title}</div>
+            <div className="name">{teacher?.title}</div>
           </div>
           <Link
             onClick={(e) => {

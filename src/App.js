@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import "./index.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Header, Footer, Nav, LazyLoad, PopupLogin, PrivateRoute, PopupRegis} from "./component";
+import { PrivateRoute} from "./component";
 import Course from "./page/course";
 import CourseDetail from "./page/coursedetail";
 import Email from "./page/email";
@@ -9,21 +11,23 @@ import Home from "./page/home";
 import Profile from "./page/profile";
 import Project from "./page/project";
 import Team from "./page/team";
-import Cooperate from "./page/cooperate";
 import RegisterCourse from "./page/register-course";
 import Coins from "./page/coins";
 import Pay from "./page/pay";
 import Page404 from "./page/404";
-import "./index.css";
 import AuthApi from "./service/AuthApi";
+import Contact from "./page/contact";
+import MainLayout from "./layout/MainLayout";
+import store from './redux'
+import Demo from "./demo";
+
 export let Context = React.createContext({});
 
 function App() {
 
   AuthApi.update({
-    name: "Khủng long xanh"
+    name: "CFD"
   }).then(res => {
-    
   })
 
   let [state, setState] = useState({
@@ -55,64 +59,6 @@ function App() {
     }catch(err){
 
     }
-
-    //     setState({
-    //       ...state,
-    //       login: res.data,
-    //     });
-    //     callback()
-    //   }else if(res.error){
-    //     setState({
-    //       ...state,
-    //       loginError: res.error
-    //     })
-    //   }
-    // })
-    // // gửi resques mất mạng thì vô catch
-    // .catch((err) =>{
-    //   // console.log('error', err);
-    // })
-
-    // 1 bất đồng bộ return về 1 promise thì sử dụng then
-    // .then((res) => {
-    //   return res.json()
-    // })
-    // .then(res=>{
-    //   if(res.data){
-    //     setState({
-    //       ...state,
-    //       login: res.data,
-    //     });
-    //     callback()
-    //   }else if(res.error){
-    //     setState({
-    //       ...state,
-    //       loginError: res.error
-    //     })
-    //   }
-    // })
-    // // gửi resques mất mạng thì vô catch
-    // .catch((err) =>{
-    //   // console.log('error', err);
-    // })
-
-    // if (username === "admin@gmail.com" && password === "123456") {
-    //   setState({
-    //     ...state,
-    //     login: {
-    //       name: "Đỗ Cao Long",
-    //       avatar: "/img/long.jpg",
-    //     },
-    //   });
-
-    //   // localStorage.setItem(
-    //   //   "login",
-    //   //   JSON.stringify({ name: "Đỗ Cao Long", avatar: "/img/avatar-lg.png" })
-    //   // );
-
-    // } else {
-    //   return "Sai Email hoặc mật khẩu";
-    // }
   }
 
   function handleLogout() {
@@ -120,49 +66,42 @@ function App() {
       ...state,
       login: false,
     });
-
-    // localStorage.setItem(
-    //   "login", false
-    // );
-
   }
 
   return (
-    <Context.Provider value={{ ...state, handleLogin, handleLogout }}>
-      <BrowserRouter>
-        <div className="App">
-          <Header />
-          <Nav />
-          <LazyLoad />
-          <PopupLogin />
-          <PopupRegis/>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <PrivateRoute path="/ca-nhan" component={Profile} /> {/* cách 2 */}
-            {/* <Route path="/ca-nhan" render={(prop) => <Profile {...prop}/>} /> */}
-            {/* cách 3 */}
-            {/* <Route path="/ca-nhan">
+    <Provider store={store}>
+      <Context.Provider value={{ ...state, handleLogin, handleLogout }}>
+        <BrowserRouter>
+          <MainLayout>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <PrivateRoute path="/ca-nhan" component={Profile} />{" "}
+              {/* cách 2 */}
+              {/* <Route path="/ca-nhan" render={(prop) => <Profile {...prop}/>} /> */}
+              {/* cách 3 */}
+              {/* <Route path="/ca-nhan">
                         <Profile/>
                       </Route> */}
-            <Route path="/gioi-thieu-coin" component={Coins} />
-            <Route path="/team" component={Team} />
-            <Route path="/hop-tac" component={Cooperate} />
-            <Route path="/khoa-hoc/:slug" component={Course} /> 
-            {/* <Route path="/khoa-hoc/" component={Course} />  */}
-            {/* Dynamic Router */}
-            {/* <Route path="/khoa-hoc/:slug" component={CourseDetail} /> */}
-            <Route path="/chi-tiet-khoa-hoc" component={CourseDetail} />
-            <Route path="/email" component={Email} />
-            <Route path="/faq" component={Faq} />
-            <Route path="/thanh-toan" component={Pay} />
-            <Route path="/du-an" component={Project} />
-            <Route path="/dang-ki-khoa-hoc" component={RegisterCourse} />
-            <Route component={Page404} />
-          </Switch>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </Context.Provider>
+              <Route path="/gioi-thieu-coin" component={Coins} />
+              <Route path="/demo" component={Demo} />
+              <Route path="/team" component={Team} />
+              <Route path="/hop-tac" component={Contact} />
+              <Route path="/khoa-hoc/" exact={true} component={Course} />
+              {/* <Route path="/khoa-hoc/" component={Course} />  */}
+              {/* Dynamic Router */}
+              {/* <Route path="/khoa-hoc/:slug" component={CourseDetail} /> */}
+              <Route path="/khoa-hoc/:slug" component={CourseDetail} />
+              <Route path="/email" component={Email} />
+              <Route path="/faq" component={Faq} />
+              <Route path="/thanh-toan" component={Pay} />
+              <Route path="/du-an" component={Project} />
+              <Route path="/dang-ki-khoa-hoc" component={RegisterCourse} />
+              <Route component={Page404} />
+            </Switch>
+          </MainLayout>
+        </BrowserRouter>
+      </Context.Provider>
+    </Provider>
   );
 }
 

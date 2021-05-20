@@ -63,14 +63,19 @@ export function Header() {
               </div>
               <div className="hamberger"></div>
               <div className="sub">
-                <Link href="#">Khóa học của tôi</Link>
-                <Link to="/ca-nhan"  onClick={(e) => {
+                <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
+                <Link
+                  to="/ca-nhan"
+                  onClick={(e) => {
                     e.preventDefault();
                     handleClick();
                     delayLink(e);
-                  }}>Thông tin tài khoản</Link>
+                  }}
+                >
+                  Thông tin tài khoản
+                </Link>
                 <Link
-                  href="#"
+                  to="#"
                   onClick={(e) => {
                     e.preventDefault();
                     handleLogout();

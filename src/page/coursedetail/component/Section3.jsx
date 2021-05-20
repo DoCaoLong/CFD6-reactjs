@@ -1,6 +1,7 @@
 import Course from "./Course"
 
-export default function Section3(params) {
+export default function Section3(img, namecourse, name, des) {
+  // let injectedProps = { title, time, date };
   return (
     <section className="section-3">
       <div className="container">

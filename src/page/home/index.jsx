@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import useDelayLink from "../../assets/hook/useDelayLink";
 import { useEffect, useState } from "react";
 import CourseApi from "../../service/CourseApi";
+
 export default function Home() {
+
+  // Lấy dử liệu danh sách khóa học
   let [list, setList] = useState({
     offline: [],
     online: [],
@@ -21,7 +24,7 @@ export default function Home() {
     });
   }, []);
 
-	// cách 2
+	// cách 2 sử dụng bất đồng bộ
 	// useEffect(async() =>{
 	// 	setList(await CourseApi.list())
 	// }, [])
