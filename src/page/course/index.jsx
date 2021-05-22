@@ -2,18 +2,27 @@ import { CourseItem } from "../../component"
 import { useEffect, useState } from "react";
 import CourseApi from "../../service/CourseApi";
 export default function Course(){
-  // Lấy dử liệu danh sách khóa học
+  // Lấy dử liệu danh sách khóa học khi biết có off và onl
   // let [list, setList] = useState({
   //    offline: [],
   //    online: [],
   // });
 
+  let [list, setList] = useState()
+
   // useEffect thực hiện 1 lần khi render
-  // useEffect(() => {
-  //   CourseApi.list().then((res) => {
-  //     setList(res);
-  //   });
-  // }, []);
+  useEffect(() => {
+    CourseApi.list().then((res) => {
+      // setList({
+      //   offline: res.offline,
+      //   online: res.online
+      // });
+      setList(res);
+      console.log(res);
+     
+    });
+  }, []);
+      console.log("list",list);
 
   return (
     <main className="homepage" id="main">
@@ -29,54 +38,9 @@ export default function Course(){
             <h2 className="main-title">ONLINE</h2>
           </div>
           <div className="list row">
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img1.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img2.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img3.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img4.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img5.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
+            {list?.online.map((e) => (
+              <CourseItem {...e} key={e._id} />
+            ))}
           </div>
         </div>
       </section>
@@ -87,30 +51,9 @@ export default function Course(){
             <h2 className="main-title">OFFLINE</h2>
           </div>
           <div className="list row">
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img1.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img2.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
-            <CourseItem
-              name="Web Responsive"
-              des="Khóa học thực chiến dự án gồm Photoshop, HTML, CSS, CSS3, SCSS, Responsive với Media Query, Bootstrap 4, Grunt, Javascript, jQuery."
-              img="/img/img3.png"
-              status="dang-dien-ra"
-              teacher_avatar="/img/avt.png"
-              teacher_name="Trần Nghĩa"
-            />
+            {list?.offline.map((e) => (
+              <CourseItem {...e} key={e._id} />
+            ))}
           </div>
           <div className="text-deco">C</div>
         </div>

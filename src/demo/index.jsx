@@ -3,20 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Demo(){
 
     let state = useSelector(state => state)
-    console.log(state);
+    // console.log(state);
 
     // tác động lên store thì dùng dispatch
     const dispatch = useDispatch()
+
     function handleIncrement(){
+      // gọi action trong store
         dispatch({
             type : 'INCREMENT'
         })
     }
-    // function handleIncrement(){
-    //     dispatch({
-    //         type : 'INCREMENT'
-    //     })
-    // }
+    function handleDecrement(){
+        dispatch({
+          type: "DECREMENT",
+        });
+    }
 
     return (
       <main className="notfound" id="main">
@@ -27,7 +29,7 @@ export default function Demo(){
             <button className="btn main round" onClick={handleIncrement}>
               +
             </button>
-            <button className="btn main round" onClick={handleIncrement}>
+            <button className="btn main round" onClick={handleDecrement}>
               -
             </button>
           </section>

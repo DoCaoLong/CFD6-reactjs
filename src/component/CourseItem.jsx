@@ -24,7 +24,7 @@ export function CourseItem({
             delayLink(e);
           }}
           className="cover"
-          to={`/khoa-hoc/${slug}`}
+          to={`/chi-tiet-khoa-hoc/${slug}`}
         >
           <img src={thumbnail?.link} alt="" />
           {course_status === "da-ket-thuc" ? (

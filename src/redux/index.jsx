@@ -1,12 +1,10 @@
-import { createStore} from 'redux'
+import { combineReducers, createStore} from 'redux'
+import AuthReducer from './reducer/AuthReducer';
+import CountReducer from './reducer/CountReducer'
 
-function reducer(state = {count: 0 }, action){
-    if(action.type === "INCREMENT"){
-        state.count++
-    }
-    return {...state}
-
-}
-
-let store = createStore(reducer);
+let reducer = combineReducers({
+    CountReducer: CountReducer,
+    AuthReducer: AuthReducer
+})
+let store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store

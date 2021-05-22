@@ -1,4 +1,4 @@
-import {endpoint} from './config'
-const ContactApi = {
+// import {endpoint} from './config'
+// const ContactApi = {
 
-}  
+// }  

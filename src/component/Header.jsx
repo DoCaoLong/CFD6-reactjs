@@ -1,11 +1,18 @@
 import { Link} from "react-router-dom";
 import useDelayLink from "../assets/hook/useDelayLink";
-import useAuth from "../assets/hook/useAuth";
+// import useAuth from "../assets/hook/useAuth";
+import { useSelector, useDispatch } from "react-redux";
+import { LogoutAciton } from "../redux/actions/AuthAction";
 export function Header() {
   
   let delayLink = useDelayLink();
-
-  let { login, handleLogout } = useAuth();
+  let dispatch = useDispatch();
+  let {login} = useSelector(store => store.AuthReducer);
+  // let { login, handleLogout } = useAuth();
+  
+  function logout(){
+    dispatch(LogoutAciton())
+  }
 
   function handleClick() {
     document.querySelector(".lazy-load").style.display = "flex";
@@ -74,17 +81,12 @@ export function Header() {
                 >
                   Thông tin tài khoản
                 </Link>
-                <Link
-                  to="#"
-                  onClick={(e) => {
+                <Link to="#" onClick={(e) => { 
                     e.preventDefault();
-                    handleLogout();
+                    logout();
                     handleClick();
                     delayLink(e);
-                  }}
-                >
-                  Đăng xuất
-                </Link>
+                  }}>Đăng xuất</Link>
               </div>
             </div>
           ) : (

@@ -9,9 +9,9 @@ import CourseApi from "../../service/CourseApi";
 
 export default function CourseDetail() {
   let {slug} = useParams()
-  console.log(slug); 
+  // console.log(slug); 
 
-  let routerMatch = useRouteMatch()
+  // let routerMatch = useRouteMatch()
 
   const [course, setCourse] = useState();
 
@@ -31,10 +31,10 @@ export default function CourseDetail() {
        />
        <Section2 />
        <Section3
-         img={course?.thumbnail.link}
-         des={course?.short_description}
-         namecourse={course?.title}
-         name={course?.teacher.title}
+         thumbnail={course?.thumbnail?.link}
+         short_description={course?.short_description}
+         title={course?.title}
+         teacher={course?.teacher?.title}
        />
        <section className="section-4">
          <div className="container">
@@ -44,22 +44,22 @@ export default function CourseDetail() {
            </div>
            <div className="list row">
              <Course
-               img={course?.thumbnail.link}
-               des={course?.short_description}
-               namecourse={course?.title}
-               name={course?.teacher.title}
+               thumbnail={course?.thumbnail?.link}
+               short_description={course?.short_description}
+               title={course?.title}
+               teacher={course?.teacher?.title}
              />
              <Course
-               img={course?.thumbnail.link}
-               des={course?.short_description}
-               namecourse={course?.title}
-               name={course?.teacher.title}
+               thumbnail={course?.thumbnail.link}
+               short_description={course?.short_description}
+               title={course?.title}
+               teacher={course?.teacher.title}
              />
              <Course
-               img={course?.thumbnail.link}
-               des={course?.short_description}
-               namecourse={course?.title}
-               name={course?.teacher.title}
+               thumbnail={course?.thumbnail.link}
+               short_description={course?.short_description}
+               title={course?.title}
+               teacher={course?.teacher.title}
              />
            </div>
          </div>

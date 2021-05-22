@@ -1,7 +1,6 @@
 import Course from "./Course"
 
-export default function Section3(img, namecourse, name, des) {
-  // let injectedProps = { title, time, date };
+export default function Section3({ thumbnail, title, teacher, short_description }) {
   return (
     <section className="section-3">
       <div className="container">
@@ -11,22 +10,22 @@ export default function Section3(img, namecourse, name, des) {
         </div>
         <div className="list row">
           <Course
-            img="img/img.png"
-            des="One of the best corporate fashion brands in Sydney"
-            namecourse="Reacjs/Redux"
-            name="Trần Nghĩa"
+            thumbnail={thumbnail}
+            short_description={short_description}
+            title={title}
+            teacher={teacher}
           />
           <Course
-            img="img/img2.png"
-            des="One of the best corporate fashion brands in Sydney"
-            namecourse="Animation"
-            name="Vương Đặng"
+            thumbnail={thumbnail}
+            short_description={short_description}
+            title={title}
+            teacher={teacher}
           />
           <Course
-            img="img/img3.png"
-            des="One of the best corporate fashion brands in Sydney"
-            namecourse="Scss, Grunt JS và Boostrap 4"
-            name="Trần Nghĩa"
+            thumbnail={thumbnail}
+            short_description={short_description}
+            title={title}
+            teacher={teacher}
           />
         </div>
       </div>

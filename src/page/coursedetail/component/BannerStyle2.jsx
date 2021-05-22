@@ -11,7 +11,7 @@ export default function BannerStyle2({title, time, date}) {
         <div className="container">
           <div className="video">
             <div className="icon">
-              <img src="img/play-icon-white.png" alt="" />
+              <img src="/img/play-icon-white.png" alt="" />
             </div>
             <span>giới thiệu</span>
           </div>

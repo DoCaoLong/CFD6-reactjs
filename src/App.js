@@ -25,10 +25,10 @@ export let Context = React.createContext({});
 
 function App() {
 
-  AuthApi.update({
-    name: "CFD"
-  }).then(res => {
-  })
+  // AuthApi.update({
+  //   name: "Khủng Long Xanh"
+  // }).then(res => {
+  // })
 
   let [state, setState] = useState({
     login: JSON.parse(localStorage.getItem("login")) 
@@ -90,7 +90,7 @@ function App() {
               {/* <Route path="/khoa-hoc/" component={Course} />  */}
               {/* Dynamic Router */}
               {/* <Route path="/khoa-hoc/:slug" component={CourseDetail} /> */}
-              <Route path="/khoa-hoc/:slug" component={CourseDetail} />
+              <Route path="/chi-tiet-khoa-hoc/:slug" component={CourseDetail} />
               <Route path="/email" component={Email} />
               <Route path="/faq" component={Faq} />
               <Route path="/thanh-toan" component={Pay} />

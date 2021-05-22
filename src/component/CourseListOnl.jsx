@@ -16,7 +16,7 @@ export function CourseListOnl({ thumbnail, title, short_description, teacher, sl
             handleClick();
             delayLink(e);
           }}
-          to={`/khoa-hoc/${slug}`}
+          to={`/chi-tiet-khoa-hoc/${slug}`}
           className="cover"
         >
           <img src={thumbnail.link} alt="" />
