@@ -1,13 +1,12 @@
 import { Link} from "react-router-dom";
 import useDelayLink from "../assets/hook/useDelayLink";
-// import useAuth from "../assets/hook/useAuth";
 import { useSelector, useDispatch } from "react-redux";
 import { LogoutAciton } from "../redux/actions/AuthAction";
 export function Header() {
   
   let delayLink = useDelayLink();
-  let dispatch = useDispatch();
   let {login} = useSelector((store) => store.AuthReducer);
+  let dispatch = useDispatch();
   // let { login, handleLogout } = useAuth();
   
   function logout(){

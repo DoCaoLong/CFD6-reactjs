@@ -5,7 +5,10 @@ import useFormValidate from '../assets/hook/useFormValidate';
 import { LoginAciton } from '../redux/actions/AuthAction';
 export function PopupLogin() {
 
-  let [loginError] = useState(null);
+  // let [loginError] = useState(null);
+
+  let { loginError } = useSelector((store) => store.AuthReducer);
+
 
   let { inputChange, check, error, form } = useFormValidate(
 
@@ -38,7 +41,6 @@ export function PopupLogin() {
     document.querySelector(".popup-login").style.display = "none";
   }
 
-  // let { loginError } = useSelector((store) => store.AuthReducer);
 
   async function loginHandle(e) {
 
