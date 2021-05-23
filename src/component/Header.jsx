@@ -5,7 +5,7 @@ import { LogoutAciton } from "../redux/actions/AuthAction";
 export function Header() {
   
   let delayLink = useDelayLink();
-  let {login} = useSelector((store) => store.AuthReducer);
+  let {login} = useSelector((store) => store.auth);
   let dispatch = useDispatch();
   // let { login, handleLogout } = useAuth();
   
@@ -69,7 +69,16 @@ export function Header() {
               </div>
               <div className="hamberger"></div>
               <div className="sub">
-                <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
+                <Link
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick();
+                    delayLink(e);
+                  }}
+                  to="/ca-nhan/khoa-hoc-cua-ban"
+                >
+                  Khóa học của tôi
+                </Link>
                 <Link
                   to="/ca-nhan"
                   onClick={(e) => {
@@ -80,12 +89,17 @@ export function Header() {
                 >
                   Thông tin tài khoản
                 </Link>
-                <Link to="#" onClick={(e) => { 
+                <Link
+                  to="#"
+                  onClick={(e) => {
                     e.preventDefault();
                     logout();
                     handleClick();
                     delayLink(e);
-                  }}>Đăng xuất</Link>
+                  }}
+                >
+                  Đăng xuất
+                </Link>
               </div>
             </div>
           ) : (

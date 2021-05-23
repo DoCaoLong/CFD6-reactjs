@@ -25,49 +25,6 @@ export let Context = React.createContext({});
 
 function App() {
 
-  // AuthApi.update({
-  //   name: "Khủng Long Xanh"
-  // }).then(res => {
-  // })
-
-  // let [state, setState] = useState({
-  //   login: JSON.parse(localStorage.getItem("login")) 
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem('login', JSON.stringify(state.login))
-  // }, [state.login]) 
-
-  // async function handleLogin(username, password) {
-  //   try{
-  //     let res = await AuthApi.login({ username, password });
-  //     // convert to json
-  //     if (res.data) {
-  //       setState({
-  //         ...state,
-  //         login: res.data,
-  //       });
-  //       return {
-  //         success: true,
-  //       };
-  //     } else if (res.error) {
-  //       // trả về báo lỗi từ back end
-  //       return {
-  //         error: res.error,
-  //       };
-  //     }
-  //   }catch(err){
-
-  //   }
-  // }
-
-  // function handleLogout() {
-  //   setState({
-  //     ...state,
-  //     login: false,
-  //   });
-  // }
-
   return (
     <Provider store={store}>
       {/* <Context.Provider value={{ ...state, handleLogin, handleLogout }}> */}

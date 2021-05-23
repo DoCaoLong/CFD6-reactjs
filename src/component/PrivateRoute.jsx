@@ -1,14 +1,16 @@
 import { Redirect, Route } from "react-router-dom";
-import { Context } from "../App";
-import useAuth from "../assets/hook/useAuth";
+// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
 
 export function PrivateRoute(prop){
-    let {login} = useAuth(Context)
+
+  let  {login} = useSelector((store) => store.auth);
 
     if(!login){
-        setTimeout(()=>{
-            document.querySelector('.popup-login').style.display="flex"
-        }, 0)
+        // setTimeout(()=>{
+        //     document.querySelector('.popup-login').style.display="flex"
+        // }, 0)
         return (
           <Route>
             <Redirect to="/" />

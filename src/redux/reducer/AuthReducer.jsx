@@ -4,7 +4,7 @@ let initState = {
   login: JSON.parse(localStorage.getItem("login")),
   loginError: "",
 };
-export default function AuthReducer(state = initState, action) {
+export default function auth(state = initState, action) {
   if (action.type === LOGIN) {
     localStorage.setItem("login", JSON.stringify(action.payload));
     return {

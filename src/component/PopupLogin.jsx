@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import reactDom from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import useFormValidate from '../assets/hook/useFormValidate';
@@ -7,7 +7,7 @@ export function PopupLogin() {
 
   // let [loginError] = useState(null);
 
-  let { loginError } = useSelector((store) => store.AuthReducer);
+  let { loginError } = useSelector((store) => store.auth);
 
 
   let { inputChange, check, error, form } = useFormValidate(
