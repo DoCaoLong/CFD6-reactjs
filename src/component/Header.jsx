@@ -7,7 +7,7 @@ export function Header() {
   
   let delayLink = useDelayLink();
   let dispatch = useDispatch();
-  let {login} = useSelector(store => store.AuthReducer);
+  let {login} = useSelector((store) => store.AuthReducer);
   // let { login, handleLogout } = useAuth();
   
   function logout(){

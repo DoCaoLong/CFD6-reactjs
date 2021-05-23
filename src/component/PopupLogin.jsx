@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import { LOGIN, LOGOUT } from "../redux/Type";
-
 import reactDom from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux';
-// import useAuth from '../assets/hook/useAuth';
 import useFormValidate from '../assets/hook/useFormValidate';
-import AuthApi from '../service/AuthApi';
 import { LoginAciton } from '../redux/actions/AuthAction';
 export function PopupLogin() {
-  let [loginError, setLoginError] = useState(null);
+
+  let [loginError] = useState(null);
+
   let { inputChange, check, error, form } = useFormValidate(
+
     {
       username: "",
       password: "",
@@ -32,8 +31,6 @@ export function PopupLogin() {
   // tác động lên store thì dùng dispatch
   let dispatch = useDispatch();
 
-  /*let { handleLogin } = useAuth();*/
-
   let st = useSelector((store) => store);
   // console.log(st);
 
@@ -41,24 +38,21 @@ export function PopupLogin() {
     document.querySelector(".popup-login").style.display = "none";
   }
 
+  // let { loginError } = useSelector((store) => store.AuthReducer);
+
   async function loginHandle(e) {
+
     e.preventDefault();
+
     let errObj = check();
+
     if (Object.keys(errObj).length === 0) {
-      let res = await AuthApi.login({
-        username: form.username,
-        password: form.password,
-      });
-      if (res.data) {
-        // dispatch({
-        //   type: LOGIN,
-        //   payload: res.data,
-        // });
-        dispatch(LoginAciton(res.data))
-        close();
-      } else if(res.error){
-        setLoginError(res.error);
-      }
+        dispatch(
+          LoginAciton({
+            username: form.username,
+            password: form.password,
+          },close)
+        );
     }
   }
 
