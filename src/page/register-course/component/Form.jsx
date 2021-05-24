@@ -51,7 +51,7 @@ export default function Form() {
           pattern: "Email không đúng định dạng example@gmail.com",
         },
         idea: {
-          required: "Í tưởng không được bỏ trống",
+          required: "Ý kiến không được bỏ trống",
         },
       },
     }

@@ -1,14 +1,20 @@
 import React from "react"
+import { useDispatch, useSelector } from "react-redux";
 import useFormValidate from "../../../assets/hook/useFormValidate";
+import { UpdateAction } from "../../../redux/actions/AuthAction";
 
 export default function InforPro() {
 	
+  // lấy rừ reddux
+  let {login} = useSelector(store => store.auth)
+
 	let { form, error, inputChange, check } = useFormValidate(
     {
-      name: "",
-      phone: "",
-      UrlFace: "",
-      skype: "",
+      name: login.name,
+      phone: login.phone,
+      UrlFace: login.UrlFace,
+      skype: login.skype,
+      email: login.email,
     },
     {
       rule: {
@@ -50,12 +56,14 @@ export default function InforPro() {
     }
   );
 
+  let dispatch = useDispatch()
+
 	 function onSubmit(e){
     e.preventDefault();
     let errObj = check();
     if (Object.keys(errObj).length === 0) {
       console.log(form);
-      //call API
+      dispatch(UpdateAction(form))
     }
   }
 
@@ -101,7 +109,7 @@ export default function InforPro() {
         <p>
           Email<span>*</span>
         </p>
-        <input defaultValue="vuong.dang@dna.vn" disabled type="text" />
+        <input value={form.email} defaultValue="vuong.dang@dna.vn" disabled type="text" />
       </label>
 
       <label style={{ flexWrap: "wrap" }}>
